@@ -1,0 +1,26 @@
+##
+# Docker Compose
+##
+version: '3.2'
+services:
+  server:
+    # Image
+    image: gameserver/teamspeak3:latest
+    restart: unless-stopped
+    # Dependencies
+    # Publish Ports
+    ports:
+      - target: 9987
+        published: 9987
+        protocol: tcp
+        mode: host
+    # Environment
+    # Volumes
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data
+    # Labels
+    # Resources
+    # Networks
+    network_mode: bridge
